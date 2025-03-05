@@ -22,7 +22,7 @@ pipeline {
                     failOnError: true,
                     publishers: [
                         sshPublisherDesc(
-                            configName: "marcos_server",
+                            configName: "marcos",
                             transfers: [sshTransfer(sourceFiles: 'marcos.war')],
                             verbose: true
                         )
@@ -37,7 +37,7 @@ pipeline {
                     failOnError: true,
                     publishers: [
                         sshPublisherDesc(
-                            configName: "marcosserver",
+                            configName: "marcos",
                             transfers: [
                                 sshTransfer(sourceFiles: 'Dockerfile'),
                                 sshTransfer(execCommand: "docker rm -f tomcat; docker rmi marcos; docker build -t marcos .; docker run -it -d -p 8081:8080 --name tomcat marcos")
